@@ -118,7 +118,7 @@
 	// TODO: Change the variables below to customize the small multiples interface for your data
 	var polygonJSONFile = 'data/Utah.geojson'
 	// change the projection if needed *d3.geoAlbers()*
-	var projection = d3.geoAlbers();
+	var projection = d3.geoConicConformal();
 	var widthheightRatio = 0.4;
 	// Relative placement of legend that ranges between 0 and 1.
 	// 0 is the start, whereas 1 i the end of each panel.
@@ -242,7 +242,7 @@
 			var polygons = data;
 			var proj = d3.geoPath().pointRadius(2);
 			// TODO: change the projection details here below - including specific parameters such as rotation, extent, etc.
-			proj.projection(projection.fitSize([width, height], polygons));
+			proj.projection(projection.parallels([39 + 1 / 60, 40 + 39 / 60]).rotate([111 + 30 / 60, 0]).fitSize([width, height], polygons));
 
 			////////////////////////////////////////////////////
 			// Normalize based multiplyby and divideby values
